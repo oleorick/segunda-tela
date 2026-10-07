@@ -1,70 +1,142 @@
-```
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segunda Tela - Gerenciador de Farm e Gestão Financeira</title>
+  <style>
+    :root {
+      --bg-color: #121214;
+      --card-bg: #202024;
+      --primary: #00875f;
+      --primary-hover: #00b37e;
+      --text: #e1e1e6;
+      --text-muted: #8d8d99;
+      --border: #323238;
+      --gold: #e5a00d;
+      --danger: #f75a68;
+    }
 
-  
-  
-  
-  
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+    body { background-color: var(--bg-color); color: var(--text); padding: 24px; }
+    .container { max-width: 960px; margin: 0 auto; display: grid; gap: 20px; }
+    header { border-bottom: 2px solid var(--border); padding-bottom: 12px; }
+    header h1 { font-size: 1.8rem; color: var(--gold); }
+    header p { color: var(--text-muted); font-size: 0.9rem; margin-top: 4px; }
 
-  <div>
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .card { background-color: var(--card-bg); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
+    .card h2 { font-size: 1.1rem; margin-bottom: 15px; color: var(--text); }
+
+    label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px; }
+    textarea, input { width: 100%; background: #121214; border: 1px solid var(--border); color: #fff; padding: 10px; border-radius: 6px; margin-bottom: 14px; }
+    textarea { height: 130px; resize: vertical; font-family: monospace; font-size: 0.85rem; }
+
+    button { width: 100%; background-color: var(--primary); color: #fff; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+    button:hover { background-color: var(--primary-hover); }
+
+    .stat-box { background: #121214; padding: 14px; border-radius: 6px; border-left: 4px solid var(--primary); }
+    .stat-box.gold { border-left-color: var(--gold); }
+    .stat-box.reais { border-left-color: #00b37e; }
+    .stat-title { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .stat-value { font-size: 1.3rem; font-weight: bold; margin-top: 4px; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  </style>
+</head>
+<body>
+  <div class="container">
     <header>
-      <h1>⚔️ Segunda Tela - MMORPG Farm Manager &amp; Caixa</h1>
+      <h1>⚔️ Segunda Tela - MMORPG Farm Manager & Caixa</h1>
       <p>Projeto Integrador | Módulo de Conversão e Rendimento Real</p>
     </header>
 
-    <div>
-      
-      <div>
+    <div class="grid-2">
+      <!-- Input do Log e Parâmetros -->
+      <div class="card">
         <h2>📋 Cole o Log do Hunt Analyzer</h2>
-        
+        <textarea id="rawLog" placeholder="Exemplo:&#10;Session data: From 2026-10-01, 20:00:00 to 2026-10-01, 21:30:00&#10;Session: 01:30h&#10;Loot: 1,800,000&#10;Supplies: 400,000&#10;Balance: 1,400,000"></textarea>
 
         <h2>⚙️ Cotação do Mercado</h2>
-        <div>
+        <div style="display: flex; gap: 12px;">
           <div>
-            
-            
+            <label>Preço 250 Coins (Gold GP)</label>
+            <input type="number" id="tcPriceGp" value="9500000" step="50000">
           </div>
           <div>
-            
-            
+            <label>Valor 250 Coins (Reais R\$)</label>
+            <input type="number" id="tcPriceBrl" value="42.00" step="0.50">
           </div>
         </div>
 
-        
+        <button onclick="processarHunt()">🚀 Processar e Converter para Caixa</button>
       </div>
 
-      
-      <div>
+      <!-- Exibição das Métricas -->
+      <div class="card">
         <h2>📊 Resultado Financeiro da Hunt</h2>
-        <div>
-          <div>
-            <div>Duração</div>
-            <div>00:00h</div>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-title">Duração</div>
+            <div class="stat-value" id="resDuration">00:00h</div>
           </div>
-          <div>
-            <div>Loot Total</div>
-            <div>0 gp</div>
+          <div class="stat-box gold">
+            <div class="stat-title">Loot Total</div>
+            <div class="stat-value" id="resLoot">0 gp</div>
           </div>
-          <div>
-            <div>Supplies</div>
-            <div>0 gp</div>
+          <div class="stat-box">
+            <div class="stat-title">Supplies</div>
+            <div class="stat-value" id="resSupplies">0 gp</div>
           </div>
-          <div>
-            <div>Lucro Líquido (Gold)</div>
-            <div>0 gp</div>
+          <div class="stat-box gold">
+            <div class="stat-title">Lucro Líquido (Gold)</div>
+            <div class="stat-value" id="resBalance">0 gp</div>
           </div>
-          <div>
-            <div>💰 Rendimento em Caixa (R\$)</div>
-            <div>R\$ 0,00</div>
+          <div class="stat-box reais" style="grid-column: span 2;">
+            <div class="stat-title">💰 Rendimento em Caixa (R\$)</div>
+            <div class="stat-value" id="resBrl" style="color: #00b37e; font-size: 1.6rem;">R\$ 0,00</div>
           </div>
-          <div>
-            <div>📈 Rendimento / Hora (R\$/h)</div>
-            <div>R\$ 0,00 / h</div>
+          <div class="stat-box reais" style="grid-column: span 2;">
+            <div class="stat-title">📈 Rendimento / Hora (R\$/h)</div>
+            <div class="stat-value" id="resBrlPerHour">R\$ 0,00 / h</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  
+  <script>
+    function processarHunt() {
+      const log = document.getElementById('rawLog').value;
+      const tcPriceGp = parseFloat(document.getElementById('tcPriceGp').value) || 9500000;
+      const tcPriceBrl = parseFloat(document.getElementById('tcPriceBrl').value) || 42.0;
 
-```
+      const durationMatch = log.match(/Session:\s*(\d{2}:\d{2})h/i);
+      const lootMatch = log.match(/Loot:\s*([\d,]+)/i);
+      const suppliesMatch = log.match(/Supplies:\s*([\d,]+)/i);
+      const balanceMatch = log.match(/Balance:\s*([\d,-]+)/i);
+
+      let durationStr = durationMatch ? durationMatch : "01:00";
+      let loot = lootMatch ? parseInt(lootMatch.replace(/,/g, '')) : 0;
+      let supplies = suppliesMatch ? parseInt(suppliesMatch.replace(/,/g, '')) : 0;
+      let balance = balanceMatch ? parseInt(balanceMatch.replace(/,/g, '')) : (loot - supplies);
+
+      const [hh, mm] = durationStr.split(':').map(Number);
+      const horasDecimais = (hh || 0) + ((mm || 0) / 60) || 1;
+
+      const totalCoins = (balance / tcPriceGp) * 250;
+      const totalBrl = (totalCoins / 250) * tcPriceBrl;
+      const brlPerHour = totalBrl / horasDecimais;
+
+      document.getElementById('resDuration').innerText = `${durationStr}h`;
+      document.getElementById('resLoot').innerText = `${loot.toLocaleString('pt-BR')} gp`;
+      document.getElementById('resSupplies').innerText = `${supplies.toLocaleString('pt-BR')} gp`;
+      document.getElementById('resBalance').innerText = `${balance.toLocaleString('pt-BR')} gp`;
+      document.getElementById('resBalance').style.color = balance >= 0 ? 'var(--gold)' : 'var(--danger)';
+      document.getElementById('resBrl').innerText = totalBrl.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      document.getElementById('resBrlPerHour').innerText = `${brlPerHour.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} / h`;
+    }
+  </script>
+</body>
+</html>
