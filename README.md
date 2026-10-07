@@ -23,8 +23,9 @@ A aplicação automatiza o *parsing* dos logs do *Hunt Analyzer*, calcula a marg
 ---
 
 ## 🌐 3. Domínio na Internet
-* **Domínio Principal:** `https://segundatela-farmmanager.app`
-* **Domínio Alternativo (Subdomínio TCC):** `https://tcc.segundatela.com.br`
+* **Domínio Principal:** `ainda nao tem`
+* **Domínio Alternativo (Subdomínio TCC):** `ainda nao tem`
+* teste agora a v1 do nosso app: ** `https://oleorick.github.io/segunda-tela/`
 
 ---
 
