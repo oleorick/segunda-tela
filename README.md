@@ -1,4 +1,4 @@
-# 🚀 Segunda Tela - Gerenciador de Farm e Gestão Financeira
+# 📌 Segunda Tela - Gerenciador de Farm e Gestão Financeira
 
 > **Projeto Pessoal / Trabalho de Engenharia de Software (TCC)**  
 > **Curso:** Analise e Desenolvivmento de Sistemas - FATEC AQA  
