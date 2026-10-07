@@ -1,0 +1,70 @@
+```
+
+  
+  
+  
+  
+
+  <div>
+    <header>
+      <h1>⚔️ Segunda Tela - MMORPG Farm Manager &amp; Caixa</h1>
+      <p>Projeto Integrador | Módulo de Conversão e Rendimento Real</p>
+    </header>
+
+    <div>
+      
+      <div>
+        <h2>📋 Cole o Log do Hunt Analyzer</h2>
+        
+
+        <h2>⚙️ Cotação do Mercado</h2>
+        <div>
+          <div>
+            
+            
+          </div>
+          <div>
+            
+            
+          </div>
+        </div>
+
+        
+      </div>
+
+      
+      <div>
+        <h2>📊 Resultado Financeiro da Hunt</h2>
+        <div>
+          <div>
+            <div>Duração</div>
+            <div>00:00h</div>
+          </div>
+          <div>
+            <div>Loot Total</div>
+            <div>0 gp</div>
+          </div>
+          <div>
+            <div>Supplies</div>
+            <div>0 gp</div>
+          </div>
+          <div>
+            <div>Lucro Líquido (Gold)</div>
+            <div>0 gp</div>
+          </div>
+          <div>
+            <div>💰 Rendimento em Caixa (R\$)</div>
+            <div>R\$ 0,00</div>
+          </div>
+          <div>
+            <div>📈 Rendimento / Hora (R\$/h)</div>
+            <div>R\$ 0,00 / h</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+```
