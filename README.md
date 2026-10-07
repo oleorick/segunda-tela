@@ -1,7 +1,7 @@
 # 🚀 Segunda Tela - Gerenciador de Farm e Gestão Financeira
 
-> **Projeto Integrador / Trabalho de Conclusão de Curso (TCC)**  
-> **Curso:** Engenharia de Software  
+> **Projeto Pessoal / Trabalho de Engenharia de Software (TCC)**  
+> **Curso:** Analise e Desenolvivmento de Sistemas - FATEC AQA  
 > **Professor Orientador:** Prof. Arnaldo  
 
 ---
