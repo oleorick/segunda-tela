@@ -6,8 +6,8 @@
 
 ---
 
-## 📌 1. Título do Projeto
-**Segunda Tela - Gerenciador de Farm e Gestão Financeira**
+## 📌 1. Segunda Tela
+**Gerenciador de Farm e Gestão Financeira**
 
 ---
 
