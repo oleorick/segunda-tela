@@ -5,13 +5,7 @@
 > **Professor Orientador:** Prof. Arnaldo  
 
 ---
-
-## 📌 1. Segunda Tela
-**Gerenciador de Farm e Gestão Financeira**
-
----
-
-## 📝 2. Descrição Geral
+## 📝 1. Descrição Geral
 O **Segunda Tela** é uma plataforma web integrada concebida como um *dashboard* em tempo real para gamers e desenvolvedores. O sistema unifica a gestão de rotina e o controle financeiro pessoal a um módulo especializado na economia de MMORPGs (**MMORPG Farm Manager**).
 
 ### Problema
@@ -22,14 +16,14 @@ A aplicação automatiza o *parsing* dos logs do *Hunt Analyzer*, calcula a marg
 
 ---
 
-## 🌐 3. Domínio na Internet
+## 🌐 2. Domínio na Internet
 * **Domínio Principal:** `ainda nao tem`
 * **Domínio Alternativo (Subdomínio TCC):** `ainda nao tem`
 * teste agora a v1 do nosso app: ** `https://oleorick.github.io/segunda-tela/`
 
 ---
 
-## 🛠️ 4. Stack de Tecnologia
+## 🛠️ 3. Stack de Tecnologia
 
 | Camada | Tecnologia | Justificativa |
 | :--- | :--- | :--- |
@@ -42,7 +36,7 @@ A aplicação automatiza o *parsing* dos logs do *Hunt Analyzer*, calcula a marg
 
 ---
 
-## 📱 5. Telas do Sistema (Mockups)
+## 📱 4. Telas do Sistema (Mockups)
 
 ### 🖥️ Tela 01: Login & Seleção de Personagem
 ```html
@@ -135,9 +129,9 @@ A aplicação automatiza o *parsing* dos logs do *Hunt Analyzer*, calcula a marg
 
 ---
 
-## 📐 6. Diagramas UML
+## 📐 5. Diagramas UML
 
-### 📊 6.1. Diagrama de Casos de Uso
+### 📊 5.1. Diagrama de Casos de Uso
 ```mermaid
 graph TD
     User((🎮 Usuário)) --> UC1[Autenticar no Sistema]
@@ -149,7 +143,7 @@ graph TD
     User --> UC7[Gerenciar Tarefas / Kanban]
 ```
 
-### 🏗️ 6.2. Diagrama de Classes
+### 🏗️ 5.2. Diagrama de Classes
 ```mermaid
 classDiagram
     class Usuario {
@@ -205,7 +199,7 @@ classDiagram
     Usuario "1" -- "*" TransacaoFinanceira : gerencia
 ```
 
-### 🔄 6.3. Diagrama de Sequência (Processamento de Hunt)
+### 🔄 5.3. Diagrama de Sequência (Processamento de Hunt)
 ```mermaid
 sequenceDiagram
     autonumber
@@ -227,7 +221,7 @@ sequenceDiagram
 
 ---
 
-## 📊 7. Estrutura de Dados (Modelo de Tabelas)
+## 📊 6. Estrutura de Dados (Modelo de Tabelas)
 
 ### Tabela 1: `tb_usuario`
 | ID (`id`) | Nome (`nome`) | Email (`email`) | Data Cadastro (`created_at`) |
